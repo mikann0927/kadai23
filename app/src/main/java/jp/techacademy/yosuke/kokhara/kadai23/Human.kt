@@ -1,18 +1,21 @@
 package jp.techacademy.yosuke.kokhara.kadai23
 
-abstract class Human {
-    // プロパティ
-    var name: String
-    var age: Int
+import android.util.Log
+
+open class Human: Animal,Thinkable {
+
     var hobby: String
 
     // 引数付きコンストラクタ
-    constructor(name: String, age: Int, think: String) {
-        this.name = name
-        this.age = age
-        this.hobby = think
+
+    constructor(name: String, age: Int, hobby:String): super(name, age) {
+        this.hobby = hobby
+    }
+    override fun say() {
+        Log.d("kotlintest", "私の名前は"+this.name+ "です。" + "年は"+this.age + "歳です。")
     }
 
-    abstract fun say()
-    abstract fun think()
+    override fun think() {
+        Log.d("kotlintest", "私は"+ this.hobby + "について考える。")
+    }
 }
